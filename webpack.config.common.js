@@ -1,5 +1,6 @@
 const glob = require('glob');
 const path = require('path');
+const webpack = require("webpack");
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
@@ -40,6 +41,10 @@ module.exports = {
       },
     ]),
     ...generateHTMLPlugins(),
+    new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery"
+    })
   ],
   stats: {
     colors: true,
